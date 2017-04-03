@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90DA82A1-87FD-4ACF-A44A-24B9E092E326}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EF</RootNamespace>
+    <AssemblyName>EF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuditLogin.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditUser.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirFish.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirFishCategory.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirFishCondition.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirFishingZone.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirFishType.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirPaymentMethod.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirPortType.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirShipType.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirUsrType.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Offer.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfferItem.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Port.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prs.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Region.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ship.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trident.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trident.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trident.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Trident.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Trident.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Usr.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Trident.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Trident.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Trident.edmx.diagram">
+      <DependentUpon>Trident.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Trident.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Trident.Context.cs</LastGenOutput>
+      <DependentUpon>Trident.edmx</DependentUpon>
+    </Content>
+    <Content Include="Trident.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Trident.edmx</DependentUpon>
+      <LastGenOutput>Trident.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

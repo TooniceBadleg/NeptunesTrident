@@ -1,0 +1,1827 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TridentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuditLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="ApplicationCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Hostname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LogIn" Type="datetime" Nullable="false" />
+          <Property Name="LogOut" Type="datetime" />
+          <Property Name="Repair" Type="bit" />
+          <Property Name="SystemDatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AuditUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="ApplicationCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="SystemDatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyType" Type="int" />
+          <Property Name="IdRegion" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdOwnerXX" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="DirFish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdFishType" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirFishCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirFishCondition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirFishingZone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rank" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirFishType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DirPaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirPortType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirShipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DirUsrType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IdDeleted" Type="int" />
+          <Property Name="DateDeleted" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCompanyXxx" Type="int" />
+          <Property Name="IdShip" Type="int" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="IdReturnPort" Type="int" />
+          <Property Name="ReturnTime" Type="datetime" />
+          <Property Name="HandoverTimeInPort" Type="datetime" />
+          <Property Name="HandoverLocationOutPort" Type="nvarchar" MaxLength="50" />
+          <Property Name="HandoverTimeOutPort" Type="datetime" />
+          <Property Name="ValidTime" Type="datetime" />
+          <Property Name="IdPaymentMethod" Type="int" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OfferItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOffer" Type="int" Nullable="false" />
+          <Property Name="IdZone" Type="int" />
+          <Property Name="IdFish" Type="int" Nullable="false" />
+          <Property Name="IdFishCategory" Type="int" />
+          <Property Name="IsFarmed" Type="bit" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="ProductImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductImageBin" Type="varbinary(max)" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdFishCondition" Type="int" />
+          <Property Name="CatchTime" Type="datetime" />
+          <Property Name="FreezeTime" Type="datetime" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdRegion" Type="int" />
+          <Property Name="IdPortType" Type="int" />
+          <Property Name="FishUnload" Type="bit" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="80" />
+          <Property Name="EmailVerified" Type="bit" />
+          <Property Name="IdCompany" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IdShip" Type="int" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Text" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="County" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShipRegistration" Type="nvarchar" MaxLength="50" />
+          <Property Name="LengthFloat" Type="float" />
+          <Property Name="LengthReal" Type="real" />
+          <Property Name="IdShipType" Type="int" />
+          <Property Name="Capacity" Type="real" />
+          <Property Name="IdCompany" Type="int" />
+          <Property Name="IdCaptain" Type="int" />
+          <Property Name="IdBasePort" Type="int" />
+          <Property Name="IdUnloadPort" Type="int" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateValid" Type="datetime" />
+          <Property Name="DateRegistration" Type="datetime" />
+          <Property Name="IdUserType" Type="int" />
+          <Property Name="IdPerson" Type="int" />
+          <Property Name="ConfirmationCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_AuditLogin_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="AuditLogin" Type="Self.AuditLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditLogin">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditUser_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="AuditUser" Type="Self.AuditUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditUser">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirFish_DirFishType">
+          <End Role="DirFishType" Type="Self.DirFishType" Multiplicity="0..1" />
+          <End Role="DirFish" Type="Self.DirFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DirFish">
+              <PropertyRef Name="IdFishType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_DirPaymentMethod">
+          <End Role="DirPaymentMethod" Type="Self.DirPaymentMethod" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirPaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdPaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Port">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdReturnPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Ship">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdShip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFish">
+          <End Role="DirFish" Type="Self.DirFish" Multiplicity="1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFish">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishCategory">
+          <End Role="DirFishCategory" Type="Self.DirFishCategory" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFishCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishCondition">
+          <End Role="DirFishCondition" Type="Self.DirFishCondition" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishCondition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFishCondition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishingZone">
+          <End Role="DirFishingZone" Type="Self.DirFishingZone" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishingZone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdZone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_Offer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdOffer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_DirPortType">
+          <End Role="DirPortType" Type="Self.DirPortType" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirPortType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="IdPortType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prs_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Prs" Type="Self.Prs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prs">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_DirShipType">
+          <End Role="DirShipType" Type="Self.DirShipType" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirShipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdShipType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Port">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdBasePort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Port1">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdUnloadPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Prs">
+          <End Role="Prs" Type="Self.Prs" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdCaptain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_DirUsrType">
+          <End Role="DirUsrType" Type="Self.DirUsrType" Multiplicity="0..1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirUsrType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="IdUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Prs">
+          <End Role="Prs" Type="Self.Prs" Multiplicity="0..1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="IdPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TridentModelStoreContainer">
+          <EntitySet Name="AuditLogin" EntityType="Self.AuditLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditUser" EntityType="Self.AuditUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirFish" EntityType="Self.DirFish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirFishCategory" EntityType="Self.DirFishCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirFishCondition" EntityType="Self.DirFishCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirFishingZone" EntityType="Self.DirFishingZone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirFishType" EntityType="Self.DirFishType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirPaymentMethod" EntityType="Self.DirPaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirPortType" EntityType="Self.DirPortType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirShipType" EntityType="Self.DirShipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirUsrType" EntityType="Self.DirUsrType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfferItem" EntityType="Self.OfferItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Port" EntityType="Self.Port" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prs" EntityType="Self.Prs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ship" EntityType="Self.Ship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AuditLogin_Usr" Association="Self.FK_AuditLogin_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="AuditLogin" EntitySet="AuditLogin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditUser_Usr" Association="Self.FK_AuditUser_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="AuditUser" EntitySet="AuditUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Region" Association="Self.FK_Company_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirFish_DirFishType" Association="Self.FK_DirFish_DirFishType">
+            <End Role="DirFishType" EntitySet="DirFishType" />
+            <End Role="DirFish" EntitySet="DirFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="Self.FK_Offer_DirPaymentMethod">
+            <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Port" Association="Self.FK_Offer_Port">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Ship" Association="Self.FK_Offer_Ship">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Usr" Association="Self.FK_Offer_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFish" Association="Self.FK_OfferItem_DirFish">
+            <End Role="DirFish" EntitySet="DirFish" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishCategory" Association="Self.FK_OfferItem_DirFishCategory">
+            <End Role="DirFishCategory" EntitySet="DirFishCategory" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishCondition" Association="Self.FK_OfferItem_DirFishCondition">
+            <End Role="DirFishCondition" EntitySet="DirFishCondition" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishingZone" Association="Self.FK_OfferItem_DirFishingZone">
+            <End Role="DirFishingZone" EntitySet="DirFishingZone" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_Offer" Association="Self.FK_OfferItem_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_DirPortType" Association="Self.FK_Port_DirPortType">
+            <End Role="DirPortType" EntitySet="DirPortType" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_Region" Association="Self.FK_Port_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prs_Company" Association="Self.FK_Prs_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Prs" EntitySet="Prs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Company" Association="Self.FK_Ship_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_DirShipType" Association="Self.FK_Ship_DirShipType">
+            <End Role="DirShipType" EntitySet="DirShipType" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Port" Association="Self.FK_Ship_Port">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Port1" Association="Self.FK_Ship_Port1">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Prs" Association="Self.FK_Ship_Prs">
+            <End Role="Prs" EntitySet="Prs" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_DirUsrType" Association="Self.FK_Usr_DirUsrType">
+            <End Role="DirUsrType" EntitySet="DirUsrType" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Prs" Association="Self.FK_Usr_Prs">
+            <End Role="Prs" EntitySet="Prs" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TridentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AuditLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hostname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogIn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogOut" Type="DateTime" Precision="3" />
+          <Property Name="Repair" Type="Boolean" />
+          <Property Name="SystemDatetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_AuditLogin_Usr" FromRole="AuditLogin" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="AuditUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SystemDatetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_AuditUser_Usr" FromRole="AuditUser" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyType" Type="Int32" />
+          <Property Name="IdRegion" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdOwnerXX" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Company_Region" FromRole="Company" ToRole="Region" />
+          <NavigationProperty Name="Prs" Relationship="Self.FK_Prs_Company" FromRole="Company" ToRole="Prs" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Company" FromRole="Company" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="DirFish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdFishType" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DirFishType" Relationship="Self.FK_DirFish_DirFishType" FromRole="DirFish" ToRole="DirFishType" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_DirFish" FromRole="DirFish" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="DirFishCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_DirFishCategory" FromRole="DirFishCategory" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="DirFishCondition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_DirFishCondition" FromRole="DirFishCondition" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="DirFishingZone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rank" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_DirFishingZone" FromRole="DirFishingZone" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="DirFishType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DirFish" Relationship="Self.FK_DirFish_DirFishType" FromRole="DirFishType" ToRole="DirFish" />
+        </EntityType>
+        <EntityType Name="DirPaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_DirPaymentMethod" FromRole="DirPaymentMethod" ToRole="Offer" />
+        </EntityType>
+        <EntityType Name="DirPortType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Port_DirPortType" FromRole="DirPortType" ToRole="Port" />
+        </EntityType>
+        <EntityType Name="DirShipType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_DirShipType" FromRole="DirShipType" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="DirUsrType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IdDeleted" Type="Int32" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_Usr_DirUsrType" FromRole="DirUsrType" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompanyXxx" Type="Int32" />
+          <Property Name="IdShip" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdReturnPort" Type="Int32" />
+          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
+          <Property Name="HandoverTimeInPort" Type="DateTime" Precision="3" />
+          <Property Name="HandoverLocationOutPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandoverTimeOutPort" Type="DateTime" Precision="3" />
+          <Property Name="ValidTime" Type="DateTime" Precision="3" />
+          <Property Name="IdPaymentMethod" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DirPaymentMethod" Relationship="Self.FK_Offer_DirPaymentMethod" FromRole="Offer" ToRole="DirPaymentMethod" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Offer_Port" FromRole="Offer" ToRole="Port" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Offer_Ship" FromRole="Offer" ToRole="Ship" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_Offer_Usr" FromRole="Offer" ToRole="Usr" />
+          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_Offer" FromRole="Offer" ToRole="OfferItem" />
+        </EntityType>
+        <EntityType Name="OfferItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOffer" Type="Int32" Nullable="false" />
+          <Property Name="IdZone" Type="Int32" />
+          <Property Name="IdFish" Type="Int32" Nullable="false" />
+          <Property Name="IdFishCategory" Type="Int32" />
+          <Property Name="IsFarmed" Type="Boolean" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImageBin" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdFishCondition" Type="Int32" />
+          <Property Name="CatchTime" Type="DateTime" Precision="3" />
+          <Property Name="FreezeTime" Type="DateTime" Precision="3" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DirFish" Relationship="Self.FK_OfferItem_DirFish" FromRole="OfferItem" ToRole="DirFish" />
+          <NavigationProperty Name="DirFishCategory" Relationship="Self.FK_OfferItem_DirFishCategory" FromRole="OfferItem" ToRole="DirFishCategory" />
+          <NavigationProperty Name="DirFishCondition" Relationship="Self.FK_OfferItem_DirFishCondition" FromRole="OfferItem" ToRole="DirFishCondition" />
+          <NavigationProperty Name="DirFishingZone" Relationship="Self.FK_OfferItem_DirFishingZone" FromRole="OfferItem" ToRole="DirFishingZone" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK_OfferItem_Offer" FromRole="OfferItem" ToRole="Offer" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" />
+          <Property Name="IdPortType" Type="Int32" />
+          <Property Name="FishUnload" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DirPortType" Relationship="Self.FK_Port_DirPortType" FromRole="Port" ToRole="DirPortType" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Port" FromRole="Port" ToRole="Offer" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Port_Region" FromRole="Port" ToRole="Region" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Port" FromRole="Port" ToRole="Ship" />
+          <NavigationProperty Name="Ship1" Relationship="Self.FK_Ship_Port1" FromRole="Port" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="Prs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="EmailVerified" Type="Boolean" />
+          <Property Name="IdCompany" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IdShip" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Prs_Company" FromRole="Prs" ToRole="Company" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Prs" FromRole="Prs" ToRole="Ship" />
+          <NavigationProperty Name="Usr" Relationship="Self.FK_Usr_Prs" FromRole="Prs" ToRole="Usr" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Company_Region" FromRole="Region" ToRole="Company" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Port_Region" FromRole="Region" ToRole="Port" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShipRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LengthFloat" Type="Double" />
+          <Property Name="LengthReal" Type="Single" />
+          <Property Name="IdShipType" Type="Int32" />
+          <Property Name="Capacity" Type="Single" />
+          <Property Name="IdCompany" Type="Int32" />
+          <Property Name="IdCaptain" Type="Int32" />
+          <Property Name="IdBasePort" Type="Int32" />
+          <Property Name="IdUnloadPort" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Ship_Company" FromRole="Ship" ToRole="Company" />
+          <NavigationProperty Name="DirShipType" Relationship="Self.FK_Ship_DirShipType" FromRole="Ship" ToRole="DirShipType" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Ship" FromRole="Ship" ToRole="Offer" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Ship_Port" FromRole="Ship" ToRole="Port" />
+          <NavigationProperty Name="Port1" Relationship="Self.FK_Ship_Port1" FromRole="Ship" ToRole="Port" />
+          <NavigationProperty Name="Prs" Relationship="Self.FK_Ship_Prs" FromRole="Ship" ToRole="Prs" />
+        </EntityType>
+        <EntityType Name="Usr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateValid" Type="DateTime" Precision="3" />
+          <Property Name="DateRegistration" Type="DateTime" Precision="3" />
+          <Property Name="IdUserType" Type="Int32" />
+          <Property Name="IdPerson" Type="Int32" />
+          <Property Name="ConfirmationCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AuditLogin" Relationship="Self.FK_AuditLogin_Usr" FromRole="Usr" ToRole="AuditLogin" />
+          <NavigationProperty Name="AuditUser" Relationship="Self.FK_AuditUser_Usr" FromRole="Usr" ToRole="AuditUser" />
+          <NavigationProperty Name="DirUsrType" Relationship="Self.FK_Usr_DirUsrType" FromRole="Usr" ToRole="DirUsrType" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Usr" FromRole="Usr" ToRole="Offer" />
+          <NavigationProperty Name="Prs" Relationship="Self.FK_Usr_Prs" FromRole="Usr" ToRole="Prs" />
+        </EntityType>
+        <Association Name="FK_AuditLogin_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="AuditLogin" Type="Self.AuditLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditLogin">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditUser_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="AuditUser" Type="Self.AuditUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AuditUser">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prs_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Prs" Type="Self.Prs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prs">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirFish_DirFishType">
+          <End Role="DirFishType" Type="Self.DirFishType" Multiplicity="0..1" />
+          <End Role="DirFish" Type="Self.DirFish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DirFish">
+              <PropertyRef Name="IdFishType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFish">
+          <End Role="DirFish" Type="Self.DirFish" Multiplicity="1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFish">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishCategory">
+          <End Role="DirFishCategory" Type="Self.DirFishCategory" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFishCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishCondition">
+          <End Role="DirFishCondition" Type="Self.DirFishCondition" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishCondition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdFishCondition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_DirFishingZone">
+          <End Role="DirFishingZone" Type="Self.DirFishingZone" Multiplicity="0..1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirFishingZone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdZone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_DirPaymentMethod">
+          <End Role="DirPaymentMethod" Type="Self.DirPaymentMethod" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirPaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdPaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_DirPortType">
+          <End Role="DirPortType" Type="Self.DirPortType" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirPortType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="IdPortType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_DirShipType">
+          <End Role="DirShipType" Type="Self.DirShipType" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirShipType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdShipType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_DirUsrType">
+          <End Role="DirUsrType" Type="Self.DirUsrType" Multiplicity="0..1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirUsrType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="IdUserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Port">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdReturnPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Ship">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdShip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_Offer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1" />
+          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdOffer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Port">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdBasePort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Port1">
+          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdUnloadPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Prs">
+          <End Role="Prs" Type="Self.Prs" Multiplicity="0..1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="IdCaptain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usr_Prs">
+          <End Role="Prs" Type="Self.Prs" Multiplicity="0..1" />
+          <End Role="Usr" Type="Self.Usr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usr">
+              <PropertyRef Name="IdPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TridentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditLogin" EntityType="Self.AuditLogin" />
+          <EntitySet Name="AuditUser" EntityType="Self.AuditUser" />
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="DirFish" EntityType="Self.DirFish" />
+          <EntitySet Name="DirFishCategory" EntityType="Self.DirFishCategory" />
+          <EntitySet Name="DirFishCondition" EntityType="Self.DirFishCondition" />
+          <EntitySet Name="DirFishingZone" EntityType="Self.DirFishingZone" />
+          <EntitySet Name="DirFishType" EntityType="Self.DirFishType" />
+          <EntitySet Name="DirPaymentMethod" EntityType="Self.DirPaymentMethod" />
+          <EntitySet Name="DirPortType" EntityType="Self.DirPortType" />
+          <EntitySet Name="DirShipType" EntityType="Self.DirShipType" />
+          <EntitySet Name="DirUsrType" EntityType="Self.DirUsrType" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" />
+          <EntitySet Name="OfferItem" EntityType="Self.OfferItem" />
+          <EntitySet Name="Port" EntityType="Self.Port" />
+          <EntitySet Name="Prs" EntityType="Self.Prs" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Ship" EntityType="Self.Ship" />
+          <EntitySet Name="Usr" EntityType="Self.Usr" />
+          <AssociationSet Name="FK_AuditLogin_Usr" Association="Self.FK_AuditLogin_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="AuditLogin" EntitySet="AuditLogin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditUser_Usr" Association="Self.FK_AuditUser_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="AuditUser" EntitySet="AuditUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Region" Association="Self.FK_Company_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prs_Company" Association="Self.FK_Prs_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Prs" EntitySet="Prs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Company" Association="Self.FK_Ship_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirFish_DirFishType" Association="Self.FK_DirFish_DirFishType">
+            <End Role="DirFishType" EntitySet="DirFishType" />
+            <End Role="DirFish" EntitySet="DirFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFish" Association="Self.FK_OfferItem_DirFish">
+            <End Role="DirFish" EntitySet="DirFish" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishCategory" Association="Self.FK_OfferItem_DirFishCategory">
+            <End Role="DirFishCategory" EntitySet="DirFishCategory" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishCondition" Association="Self.FK_OfferItem_DirFishCondition">
+            <End Role="DirFishCondition" EntitySet="DirFishCondition" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_DirFishingZone" Association="Self.FK_OfferItem_DirFishingZone">
+            <End Role="DirFishingZone" EntitySet="DirFishingZone" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="Self.FK_Offer_DirPaymentMethod">
+            <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_DirPortType" Association="Self.FK_Port_DirPortType">
+            <End Role="DirPortType" EntitySet="DirPortType" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_DirShipType" Association="Self.FK_Ship_DirShipType">
+            <End Role="DirShipType" EntitySet="DirShipType" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_DirUsrType" Association="Self.FK_Usr_DirUsrType">
+            <End Role="DirUsrType" EntitySet="DirUsrType" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Port" Association="Self.FK_Offer_Port">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Ship" Association="Self.FK_Offer_Ship">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Usr" Association="Self.FK_Offer_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_Offer" Association="Self.FK_OfferItem_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_Region" Association="Self.FK_Port_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Port" Association="Self.FK_Ship_Port">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Port1" Association="Self.FK_Ship_Port1">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Prs" Association="Self.FK_Ship_Prs">
+            <End Role="Prs" EntitySet="Prs" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usr_Prs" Association="Self.FK_Usr_Prs">
+            <End Role="Prs" EntitySet="Prs" />
+            <End Role="Usr" EntitySet="Usr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TridentModelStoreContainer" CdmEntityContainer="TridentEntities">
+          <EntitySetMapping Name="AuditLogin">
+            <EntityTypeMapping TypeName="TridentModel.AuditLogin">
+              <MappingFragment StoreEntitySet="AuditLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="ApplicationCode" ColumnName="ApplicationCode" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+                <ScalarProperty Name="LogIn" ColumnName="LogIn" />
+                <ScalarProperty Name="LogOut" ColumnName="LogOut" />
+                <ScalarProperty Name="Repair" ColumnName="Repair" />
+                <ScalarProperty Name="SystemDatetime" ColumnName="SystemDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditUser">
+            <EntityTypeMapping TypeName="TridentModel.AuditUser">
+              <MappingFragment StoreEntitySet="AuditUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="ApplicationCode" ColumnName="ApplicationCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SystemDatetime" ColumnName="SystemDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="TridentModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdOwnerXX" ColumnName="IdOwnerXX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirFish">
+            <EntityTypeMapping TypeName="TridentModel.DirFish">
+              <MappingFragment StoreEntitySet="DirFish">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IdFishType" ColumnName="IdFishType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirFishCategory">
+            <EntityTypeMapping TypeName="TridentModel.DirFishCategory">
+              <MappingFragment StoreEntitySet="DirFishCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirFishCondition">
+            <EntityTypeMapping TypeName="TridentModel.DirFishCondition">
+              <MappingFragment StoreEntitySet="DirFishCondition">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirFishingZone">
+            <EntityTypeMapping TypeName="TridentModel.DirFishingZone">
+              <MappingFragment StoreEntitySet="DirFishingZone">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirFishType">
+            <EntityTypeMapping TypeName="TridentModel.DirFishType">
+              <MappingFragment StoreEntitySet="DirFishType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirPaymentMethod">
+            <EntityTypeMapping TypeName="TridentModel.DirPaymentMethod">
+              <MappingFragment StoreEntitySet="DirPaymentMethod">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirPortType">
+            <EntityTypeMapping TypeName="TridentModel.DirPortType">
+              <MappingFragment StoreEntitySet="DirPortType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirShipType">
+            <EntityTypeMapping TypeName="TridentModel.DirShipType">
+              <MappingFragment StoreEntitySet="DirShipType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirUsrType">
+            <EntityTypeMapping TypeName="TridentModel.DirUsrType">
+              <MappingFragment StoreEntitySet="DirUsrType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IdDeleted" ColumnName="IdDeleted" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offer">
+            <EntityTypeMapping TypeName="TridentModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCompanyXxx" ColumnName="IdCompanyXxx" />
+                <ScalarProperty Name="IdShip" ColumnName="IdShip" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="IdReturnPort" ColumnName="IdReturnPort" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="HandoverTimeInPort" ColumnName="HandoverTimeInPort" />
+                <ScalarProperty Name="HandoverLocationOutPort" ColumnName="HandoverLocationOutPort" />
+                <ScalarProperty Name="HandoverTimeOutPort" ColumnName="HandoverTimeOutPort" />
+                <ScalarProperty Name="ValidTime" ColumnName="ValidTime" />
+                <ScalarProperty Name="IdPaymentMethod" ColumnName="IdPaymentMethod" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfferItem">
+            <EntityTypeMapping TypeName="TridentModel.OfferItem">
+              <MappingFragment StoreEntitySet="OfferItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOffer" ColumnName="IdOffer" />
+                <ScalarProperty Name="IdZone" ColumnName="IdZone" />
+                <ScalarProperty Name="IdFish" ColumnName="IdFish" />
+                <ScalarProperty Name="IdFishCategory" ColumnName="IdFishCategory" />
+                <ScalarProperty Name="IsFarmed" ColumnName="IsFarmed" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductImageBin" ColumnName="ProductImageBin" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdFishCondition" ColumnName="IdFishCondition" />
+                <ScalarProperty Name="CatchTime" ColumnName="CatchTime" />
+                <ScalarProperty Name="FreezeTime" ColumnName="FreezeTime" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Port">
+            <EntityTypeMapping TypeName="TridentModel.Port">
+              <MappingFragment StoreEntitySet="Port">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="IdPortType" ColumnName="IdPortType" />
+                <ScalarProperty Name="FishUnload" ColumnName="FishUnload" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prs">
+            <EntityTypeMapping TypeName="TridentModel.Prs">
+              <MappingFragment StoreEntitySet="Prs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailVerified" ColumnName="EmailVerified" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IdShip" ColumnName="IdShip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="TridentModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ship">
+            <EntityTypeMapping TypeName="TridentModel.Ship">
+              <MappingFragment StoreEntitySet="Ship">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="ShipRegistration" ColumnName="ShipRegistration" />
+                <ScalarProperty Name="LengthFloat" ColumnName="LengthFloat" />
+                <ScalarProperty Name="LengthReal" ColumnName="LengthReal" />
+                <ScalarProperty Name="IdShipType" ColumnName="IdShipType" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="IdCaptain" ColumnName="IdCaptain" />
+                <ScalarProperty Name="IdBasePort" ColumnName="IdBasePort" />
+                <ScalarProperty Name="IdUnloadPort" ColumnName="IdUnloadPort" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usr">
+            <EntityTypeMapping TypeName="TridentModel.Usr">
+              <MappingFragment StoreEntitySet="Usr">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateValid" ColumnName="DateValid" />
+                <ScalarProperty Name="DateRegistration" ColumnName="DateRegistration" />
+                <ScalarProperty Name="IdUserType" ColumnName="IdUserType" />
+                <ScalarProperty Name="IdPerson" ColumnName="IdPerson" />
+                <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
