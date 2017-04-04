@@ -39,10 +39,10 @@ namespace EF
     
         public virtual Company Company { get; set; }
         public virtual DirShipType DirShipType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Offer> Offer { get; set; }
         public virtual Port Port { get; set; }
         public virtual Port Port1 { get; set; }
         public virtual Prs Prs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Offer> Offer { get; set; }
     }
 }

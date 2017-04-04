@@ -42,8 +42,8 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuditUser> AuditUser { get; set; }
         public virtual DirUsrType DirUsrType { get; set; }
+        public virtual Prs Prs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Offer> Offer { get; set; }
-        public virtual Prs Prs { get; set; }
     }
 }

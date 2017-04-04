@@ -37,12 +37,12 @@ namespace EF
         public virtual DbSet<DirPortType> DirPortType { get; set; }
         public virtual DbSet<DirShipType> DirShipType { get; set; }
         public virtual DbSet<DirUsrType> DirUsrType { get; set; }
-        public virtual DbSet<Offer> Offer { get; set; }
         public virtual DbSet<OfferItem> OfferItem { get; set; }
         public virtual DbSet<Port> Port { get; set; }
         public virtual DbSet<Prs> Prs { get; set; }
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Ship> Ship { get; set; }
         public virtual DbSet<Usr> Usr { get; set; }
+        public virtual DbSet<Offer> Offer { get; set; }
     }
 }

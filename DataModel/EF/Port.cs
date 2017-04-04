@@ -17,9 +17,9 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Port()
         {
-            this.Offer = new HashSet<Offer>();
             this.Ship = new HashSet<Ship>();
             this.Ship1 = new HashSet<Ship>();
+            this.Offer = new HashSet<Offer>();
         }
     
         public int Id { get; set; }
@@ -38,12 +38,12 @@ namespace EF
         public Nullable<System.DateTime> DateUpdated { get; set; }
     
         public virtual DirPortType DirPortType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Offer> Offer { get; set; }
         public virtual Region Region { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ship> Ship { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ship> Ship1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Offer> Offer { get; set; }
     }
 }

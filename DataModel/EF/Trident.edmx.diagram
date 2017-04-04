@@ -4,26 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9f7e8200436640bf8c1a2d1e073e4975" Name="Diagram1">
-        <EntityTypeShape EntityType="TridentModel.AuditLogin" Width="1.5" PointX="12.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.AuditUser" Width="1.5" PointX="12.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Company" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirFish" Width="1.5" PointX="15.75" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirFishCategory" Width="1.5" PointX="15.75" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirFishCondition" Width="1.5" PointX="15.75" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirFishingZone" Width="1.5" PointX="15.75" PointY="26.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirFishType" Width="1.5" PointX="13.5" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirPaymentMethod" Width="1.5" PointX="13.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirPortType" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirShipType" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.DirUsrType" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Offer" Width="1.5" PointX="15.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.OfferItem" Width="1.5" PointX="18" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Port" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Prs" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Region" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Ship" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="TridentModel.Usr" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+      <Diagram DiagramId="9f7e8200436640bf8c1a2d1e073e4975" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="TridentModel.AuditLogin" Width="1.5" PointX="5.125" PointY="1.5" IsExpanded="true" FillColor="Lime" />
+        <EntityTypeShape EntityType="TridentModel.AuditUser" Width="1.5" PointX="1.625" PointY="5.75" IsExpanded="true" FillColor="Lime" />
+        <EntityTypeShape EntityType="TridentModel.Company" Width="1.5" PointX="15.625" PointY="21" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="TridentModel.DirFish" Width="1.5" PointX="33" PointY="2" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirFishCategory" Width="1.5" PointX="36.125" PointY="6.125" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirFishCondition" Width="1.5" PointX="24.625" PointY="2" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirFishingZone" Width="1.5" PointX="32.625" PointY="8.125" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirFishType" Width="1.5" PointX="36.75" PointY="2.375" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirPaymentMethod" Width="1.5" PointX="17.375" PointY="9.875" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirPortType" Width="1.5" PointX="36.5" PointY="18" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirShipType" Width="1.5" PointX="25.25" PointY="16.5" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.DirUsrType" Width="1.5" PointX="1.5" PointY="10" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="TridentModel.OfferItem" Width="1.5" PointX="27.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TridentModel.Port" Width="1.5" PointX="30.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TridentModel.Prs" Width="1.5" PointX="10.875" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TridentModel.Region" Width="1.5" PointX="34.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TridentModel.Ship" Width="1.5" PointX="21.125" PointY="17" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="TridentModel.Usr" Width="1.5" PointX="5.125" PointY="6.875" IsExpanded="true" FillColor="Red" />
         <AssociationConnector Association="TridentModel.FK_AuditLogin_Usr" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_AuditUser_Usr" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Company_Region" ManuallyRouted="false" />
@@ -34,19 +33,20 @@
         <AssociationConnector Association="TridentModel.FK_OfferItem_DirFishCategory" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_OfferItem_DirFishCondition" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_OfferItem_DirFishingZone" ManuallyRouted="false" />
-        <AssociationConnector Association="TridentModel.FK_Offer_DirPaymentMethod" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Port_DirPortType" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Ship_DirShipType" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Usr_DirUsrType" ManuallyRouted="false" />
-        <AssociationConnector Association="TridentModel.FK_Offer_Port" ManuallyRouted="false" />
-        <AssociationConnector Association="TridentModel.FK_Offer_Ship" ManuallyRouted="false" />
-        <AssociationConnector Association="TridentModel.FK_Offer_Usr" ManuallyRouted="false" />
-        <AssociationConnector Association="TridentModel.FK_OfferItem_Offer" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Port_Region" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Ship_Port" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Ship_Port1" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Ship_Prs" ManuallyRouted="false" />
         <AssociationConnector Association="TridentModel.FK_Usr_Prs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TridentModel.Offer" Width="1.5" PointX="21.125" PointY="6.25" FillColor="Red" />
+        <AssociationConnector Association="TridentModel.FK_Offer_DirPaymentMethod" />
+        <AssociationConnector Association="TridentModel.FK_Offer_Port" />
+        <AssociationConnector Association="TridentModel.FK_Offer_Ship" />
+        <AssociationConnector Association="TridentModel.FK_Offer_Usr" />
+        <AssociationConnector Association="TridentModel.FK_OfferItem_Offer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

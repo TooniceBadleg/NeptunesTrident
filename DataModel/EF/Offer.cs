@@ -21,7 +21,7 @@ namespace EF
         }
     
         public int Id { get; set; }
-        public Nullable<int> IdCompanyXxx { get; set; }
+        public Nullable<int> IdCompany { get; set; }
         public Nullable<int> IdShip { get; set; }
         public System.DateTime Timestamp { get; set; }
         public Nullable<int> IdReturnPort { get; set; }

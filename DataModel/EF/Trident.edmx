@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TridentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TridentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AuditLogin">
           <Key>
             <PropertyRef Name="Id" />
@@ -180,7 +180,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdCompanyXxx" Type="int" />
+          <Property Name="IdCompany" Type="int" />
           <Property Name="IdShip" Type="int" />
           <Property Name="Timestamp" Type="datetime" Nullable="false" />
           <Property Name="IdReturnPort" Type="int" />
@@ -708,8 +708,7 @@
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TridentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -846,7 +845,7 @@
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdUpdated" Type="Int32" />
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_DirPaymentMethod" FromRole="DirPaymentMethod" ToRole="Offer" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_DirPaymentMethod" FromRole="DirPaymentMethod" ToRole="Offer" />
         </EntityType>
         <EntityType Name="DirPortType">
           <Key>
@@ -898,34 +897,6 @@
           <Property Name="DateDeleted" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Usr" Relationship="Self.FK_Usr_DirUsrType" FromRole="DirUsrType" ToRole="Usr" />
         </EntityType>
-        <EntityType Name="Offer">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCompanyXxx" Type="Int32" />
-          <Property Name="IdShip" Type="Int32" />
-          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdReturnPort" Type="Int32" />
-          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
-          <Property Name="HandoverTimeInPort" Type="DateTime" Precision="3" />
-          <Property Name="HandoverLocationOutPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HandoverTimeOutPort" Type="DateTime" Precision="3" />
-          <Property Name="ValidTime" Type="DateTime" Precision="3" />
-          <Property Name="IdPaymentMethod" Type="Int32" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Active" Type="Boolean" />
-          <Property Name="IdCreated" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdUpdated" Type="Int32" />
-          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="DirPaymentMethod" Relationship="Self.FK_Offer_DirPaymentMethod" FromRole="Offer" ToRole="DirPaymentMethod" />
-          <NavigationProperty Name="Port" Relationship="Self.FK_Offer_Port" FromRole="Offer" ToRole="Port" />
-          <NavigationProperty Name="Ship" Relationship="Self.FK_Offer_Ship" FromRole="Offer" ToRole="Ship" />
-          <NavigationProperty Name="Usr" Relationship="Self.FK_Offer_Usr" FromRole="Offer" ToRole="Usr" />
-          <NavigationProperty Name="OfferItem" Relationship="Self.FK_OfferItem_Offer" FromRole="Offer" ToRole="OfferItem" />
-        </EntityType>
         <EntityType Name="OfferItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -952,7 +923,7 @@
           <NavigationProperty Name="DirFishCategory" Relationship="Self.FK_OfferItem_DirFishCategory" FromRole="OfferItem" ToRole="DirFishCategory" />
           <NavigationProperty Name="DirFishCondition" Relationship="Self.FK_OfferItem_DirFishCondition" FromRole="OfferItem" ToRole="DirFishCondition" />
           <NavigationProperty Name="DirFishingZone" Relationship="Self.FK_OfferItem_DirFishingZone" FromRole="OfferItem" ToRole="DirFishingZone" />
-          <NavigationProperty Name="Offer" Relationship="Self.FK_OfferItem_Offer" FromRole="OfferItem" ToRole="Offer" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_OfferItem_Offer" FromRole="OfferItem" ToRole="Offer" />
         </EntityType>
         <EntityType Name="Port">
           <Key>
@@ -973,10 +944,10 @@
           <Property Name="IdUpdated" Type="Int32" />
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DirPortType" Relationship="Self.FK_Port_DirPortType" FromRole="Port" ToRole="DirPortType" />
-          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Port" FromRole="Port" ToRole="Offer" />
           <NavigationProperty Name="Region" Relationship="Self.FK_Port_Region" FromRole="Port" ToRole="Region" />
           <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Port" FromRole="Port" ToRole="Ship" />
           <NavigationProperty Name="Ship1" Relationship="Self.FK_Ship_Port1" FromRole="Port" ToRole="Ship" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_Port" FromRole="Port" ToRole="Offer" />
         </EntityType>
         <EntityType Name="Prs">
           <Key>
@@ -1044,10 +1015,10 @@
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_Ship_Company" FromRole="Ship" ToRole="Company" />
           <NavigationProperty Name="DirShipType" Relationship="Self.FK_Ship_DirShipType" FromRole="Ship" ToRole="DirShipType" />
-          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Ship" FromRole="Ship" ToRole="Offer" />
           <NavigationProperty Name="Port" Relationship="Self.FK_Ship_Port" FromRole="Ship" ToRole="Port" />
           <NavigationProperty Name="Port1" Relationship="Self.FK_Ship_Port1" FromRole="Ship" ToRole="Port" />
           <NavigationProperty Name="Prs" Relationship="Self.FK_Ship_Prs" FromRole="Ship" ToRole="Prs" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_Ship" FromRole="Ship" ToRole="Offer" />
         </EntityType>
         <EntityType Name="Usr">
           <Key>
@@ -1070,8 +1041,8 @@
           <NavigationProperty Name="AuditLogin" Relationship="Self.FK_AuditLogin_Usr" FromRole="Usr" ToRole="AuditLogin" />
           <NavigationProperty Name="AuditUser" Relationship="Self.FK_AuditUser_Usr" FromRole="Usr" ToRole="AuditUser" />
           <NavigationProperty Name="DirUsrType" Relationship="Self.FK_Usr_DirUsrType" FromRole="Usr" ToRole="DirUsrType" />
-          <NavigationProperty Name="Offer" Relationship="Self.FK_Offer_Usr" FromRole="Usr" ToRole="Offer" />
           <NavigationProperty Name="Prs" Relationship="Self.FK_Usr_Prs" FromRole="Usr" ToRole="Prs" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_Usr" FromRole="Usr" ToRole="Offer" />
         </EntityType>
         <Association Name="FK_AuditLogin_Usr">
           <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
@@ -1193,18 +1164,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Offer_DirPaymentMethod">
-          <End Role="DirPaymentMethod" Type="Self.DirPaymentMethod" Multiplicity="0..1" />
-          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DirPaymentMethod">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Offer">
-              <PropertyRef Name="IdPaymentMethod" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Port_DirPortType">
           <End Role="DirPortType" Type="Self.DirPortType" Multiplicity="0..1" />
           <End Role="Port" Type="Self.Port" Multiplicity="*" />
@@ -1238,54 +1197,6 @@
             </Principal>
             <Dependent Role="Usr">
               <PropertyRef Name="IdUserType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Offer_Port">
-          <End Role="Port" Type="Self.Port" Multiplicity="0..1" />
-          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Port">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Offer">
-              <PropertyRef Name="IdReturnPort" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Offer_Ship">
-          <End Role="Ship" Type="Self.Ship" Multiplicity="0..1" />
-          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ship">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Offer">
-              <PropertyRef Name="IdShip" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Offer_Usr">
-          <End Role="Usr" Type="Self.Usr" Multiplicity="1" />
-          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usr">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Offer">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OfferItem_Offer">
-          <End Role="Offer" Type="Self.Offer" Multiplicity="1" />
-          <End Role="OfferItem" Type="Self.OfferItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Offer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="OfferItem">
-              <PropertyRef Name="IdOffer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1362,7 +1273,6 @@
           <EntitySet Name="DirPortType" EntityType="Self.DirPortType" />
           <EntitySet Name="DirShipType" EntityType="Self.DirShipType" />
           <EntitySet Name="DirUsrType" EntityType="Self.DirUsrType" />
-          <EntitySet Name="Offer" EntityType="Self.Offer" />
           <EntitySet Name="OfferItem" EntityType="Self.OfferItem" />
           <EntitySet Name="Port" EntityType="Self.Port" />
           <EntitySet Name="Prs" EntityType="Self.Prs" />
@@ -1409,10 +1319,6 @@
             <End Role="DirFishingZone" EntitySet="DirFishingZone" />
             <End Role="OfferItem" EntitySet="OfferItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="Self.FK_Offer_DirPaymentMethod">
-            <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
-            <End Role="Offer" EntitySet="Offer" />
-          </AssociationSet>
           <AssociationSet Name="FK_Port_DirPortType" Association="Self.FK_Port_DirPortType">
             <End Role="DirPortType" EntitySet="DirPortType" />
             <End Role="Port" EntitySet="Port" />
@@ -1424,22 +1330,6 @@
           <AssociationSet Name="FK_Usr_DirUsrType" Association="Self.FK_Usr_DirUsrType">
             <End Role="DirUsrType" EntitySet="DirUsrType" />
             <End Role="Usr" EntitySet="Usr" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_Port" Association="Self.FK_Offer_Port">
-            <End Role="Port" EntitySet="Port" />
-            <End Role="Offer" EntitySet="Offer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_Ship" Association="Self.FK_Offer_Ship">
-            <End Role="Ship" EntitySet="Ship" />
-            <End Role="Offer" EntitySet="Offer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_Usr" Association="Self.FK_Offer_Usr">
-            <End Role="Usr" EntitySet="Usr" />
-            <End Role="Offer" EntitySet="Offer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OfferItem_Offer" Association="Self.FK_OfferItem_Offer">
-            <End Role="Offer" EntitySet="Offer" />
-            <End Role="OfferItem" EntitySet="OfferItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Port_Region" Association="Self.FK_Port_Region">
             <End Role="Region" EntitySet="Region" />
@@ -1461,7 +1351,116 @@
             <End Role="Prs" EntitySet="Prs" />
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
+          <EntitySet Name="Offer" EntityType="TridentModel.Offer" />
+          <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="TridentModel.FK_Offer_DirPaymentMethod">
+            <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Port" Association="TridentModel.FK_Offer_Port">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Ship" Association="TridentModel.FK_Offer_Ship">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Usr" Association="TridentModel.FK_Offer_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfferItem_Offer" Association="TridentModel.FK_OfferItem_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="OfferItem" EntitySet="OfferItem" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCompany" Type="Int32" />
+          <Property Name="IdShip" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdReturnPort" Type="Int32" />
+          <Property Name="ReturnTime" Type="DateTime" Precision="3" />
+          <Property Name="HandoverTimeInPort" Type="DateTime" Precision="3" />
+          <Property Name="HandoverLocationOutPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HandoverTimeOutPort" Type="DateTime" Precision="3" />
+          <Property Name="ValidTime" Type="DateTime" Precision="3" />
+          <Property Name="IdPaymentMethod" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DirPaymentMethod" Relationship="TridentModel.FK_Offer_DirPaymentMethod" FromRole="Offer" ToRole="DirPaymentMethod" />
+          <NavigationProperty Name="Port" Relationship="TridentModel.FK_Offer_Port" FromRole="Offer" ToRole="Port" />
+          <NavigationProperty Name="Ship" Relationship="TridentModel.FK_Offer_Ship" FromRole="Offer" ToRole="Ship" />
+          <NavigationProperty Name="Usr" Relationship="TridentModel.FK_Offer_Usr" FromRole="Offer" ToRole="Usr" />
+          <NavigationProperty Name="OfferItem" Relationship="TridentModel.FK_OfferItem_Offer" FromRole="Offer" ToRole="OfferItem" />
+        </EntityType>
+        <Association Name="FK_Offer_DirPaymentMethod">
+          <End Type="TridentModel.DirPaymentMethod" Role="DirPaymentMethod" Multiplicity="0..1" />
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirPaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdPaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Port">
+          <End Type="TridentModel.Port" Role="Port" Multiplicity="0..1" />
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdReturnPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Ship">
+          <End Type="TridentModel.Ship" Role="Ship" Multiplicity="0..1" />
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdShip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Usr">
+          <End Type="TridentModel.Usr" Role="Usr" Multiplicity="1" />
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfferItem_Offer">
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="TridentModel.OfferItem" Role="OfferItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfferItem">
+              <PropertyRef Name="IdOffer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1650,30 +1649,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Offer">
-            <EntityTypeMapping TypeName="TridentModel.Offer">
-              <MappingFragment StoreEntitySet="Offer">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdCompanyXxx" ColumnName="IdCompanyXxx" />
-                <ScalarProperty Name="IdShip" ColumnName="IdShip" />
-                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-                <ScalarProperty Name="IdReturnPort" ColumnName="IdReturnPort" />
-                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
-                <ScalarProperty Name="HandoverTimeInPort" ColumnName="HandoverTimeInPort" />
-                <ScalarProperty Name="HandoverLocationOutPort" ColumnName="HandoverLocationOutPort" />
-                <ScalarProperty Name="HandoverTimeOutPort" ColumnName="HandoverTimeOutPort" />
-                <ScalarProperty Name="ValidTime" ColumnName="ValidTime" />
-                <ScalarProperty Name="IdPaymentMethod" ColumnName="IdPaymentMethod" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
-                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OfferItem">
             <EntityTypeMapping TypeName="TridentModel.OfferItem">
               <MappingFragment StoreEntitySet="OfferItem">
@@ -1798,6 +1773,30 @@
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
                 <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offer">
+            <EntityTypeMapping TypeName="TridentModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdPaymentMethod" ColumnName="IdPaymentMethod" />
+                <ScalarProperty Name="ValidTime" ColumnName="ValidTime" />
+                <ScalarProperty Name="HandoverTimeOutPort" ColumnName="HandoverTimeOutPort" />
+                <ScalarProperty Name="HandoverLocationOutPort" ColumnName="HandoverLocationOutPort" />
+                <ScalarProperty Name="HandoverTimeInPort" ColumnName="HandoverTimeInPort" />
+                <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+                <ScalarProperty Name="IdReturnPort" ColumnName="IdReturnPort" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="IdShip" ColumnName="IdShip" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
