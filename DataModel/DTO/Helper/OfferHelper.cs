@@ -95,6 +95,12 @@ namespace DTO
             dto.IdUpdated = entity.IdUpdated;
             dto.DateUpdated = entity.DateUpdated;
 
+            if (entity.Ship != null)
+                dto.ShipName = entity.Ship.ShipName;
+
+            if (entity.OfferItem != null)
+                dto.OfferItemDTO = OfferItemHelper.ToDTOs(entity.OfferItem);
+
             entity.OnDTO(dto);
 
             return dto;

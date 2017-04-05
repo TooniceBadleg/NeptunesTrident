@@ -95,6 +95,10 @@ namespace DTO
             dto.IdUpdated = entity.IdUpdated;
             dto.DateUpdated = entity.DateUpdated;
 
+            //custom added code
+            if (entity.DirFish != null)
+                dto.FishName = entity.DirFish.Text;
+
             entity.OnDTO(dto);
 
             return dto;
