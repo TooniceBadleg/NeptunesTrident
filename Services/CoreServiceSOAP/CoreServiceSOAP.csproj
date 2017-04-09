@@ -43,6 +43,17 @@
     <Reference Include="DTO">
       <HintPath>..\..\DataModel\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
+    <Reference Include="EF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DataModel\EF\bin\Debug\EF.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DataModel\EF\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\DataModel\EF\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -67,6 +78,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\ReturnData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Srv.asmx.cs">
       <DependentUpon>Srv.asmx</DependentUpon>
