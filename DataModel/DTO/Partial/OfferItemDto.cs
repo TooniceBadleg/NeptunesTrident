@@ -10,6 +10,9 @@ namespace DTO
     {
         public string FishName { get; set; }
 
+        public string FishCategoryName { get; set; }
+
+        public OfferDto OfferParent { get; set; }
 
     }
 }

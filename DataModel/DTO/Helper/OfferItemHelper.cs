@@ -98,6 +98,15 @@ namespace DTO
             //custom added code
             if (entity.DirFish != null)
                 dto.FishName = entity.DirFish.Text;
+            //custom added code
+            if (entity.DirFishCategory != null)
+                dto.FishCategoryName = entity.DirFishCategory.Text;
+
+
+            // da li ce ovo stvoriti infinite loop?
+            if (entity.Offer != null)
+                dto.OfferParent = OfferHelper.ToDTO(entity.Offer);
+            
 
             entity.OnDTO(dto);
 

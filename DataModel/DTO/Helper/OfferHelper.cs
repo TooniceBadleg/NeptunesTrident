@@ -98,8 +98,11 @@ namespace DTO
             if (entity.Ship != null)
                 dto.ShipName = entity.Ship.ShipName;
 
-            if (entity.OfferItem != null)
-                dto.OfferItemDTO = OfferItemHelper.ToDTOs(entity.OfferItem);
+            //try
+            //{
+            //    if (entity.OfferItem != null)   // ako nema Include("OfferItem") onda ovaj property skoro da uopce ne postoji pa ce ovo pucati bez try catch
+            //        dto.OfferItemDTO = OfferItemHelper.ToDTOs(entity.OfferItem);
+            //} catch { }
 
             entity.OnDTO(dto);
 
