@@ -103,9 +103,9 @@ namespace DTO
                 dto.FishCategoryName = entity.DirFishCategory.Text;
 
 
-            // da li ce ovo stvoriti infinite loop?
-            if (entity.Offer != null)
-                dto.OfferParent = OfferHelper.ToDTO(entity.Offer);
+            ////////// da li ce ovo stvoriti infinite loop?   --  ovo bas i ne ide
+            //////////if (entity.Offer != null)
+            //////////    dto.OfferParent = OfferHelper.ToDTO(entity.Offer);
             
 
             entity.OnDTO(dto);

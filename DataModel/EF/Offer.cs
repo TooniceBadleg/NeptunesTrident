@@ -17,6 +17,7 @@ namespace EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Offer()
         {
+            this.Bidding = new HashSet<Bidding>();
             this.OfferItem = new HashSet<OfferItem>();
         }
     
@@ -39,6 +40,9 @@ namespace EF
         public Nullable<int> IdUpdated { get; set; }
         public Nullable<System.DateTime> DateUpdated { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bidding> Bidding { get; set; }
+        public virtual Company Company { get; set; }
         public virtual DirPaymentMethod DirPaymentMethod { get; set; }
         public virtual Port Port { get; set; }
         public virtual Ship Ship { get; set; }

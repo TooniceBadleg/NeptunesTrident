@@ -57,6 +57,9 @@
     <Compile Include="AuditUser.cs">
       <DependentUpon>Trident.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bidding.cs">
+      <DependentUpon>Trident.tt</DependentUpon>
+    </Compile>
     <Compile Include="Company.cs">
       <DependentUpon>Trident.tt</DependentUpon>
     </Compile>

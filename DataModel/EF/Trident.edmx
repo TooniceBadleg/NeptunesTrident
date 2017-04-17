@@ -31,6 +31,25 @@
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="SystemDatetime" Type="datetime" />
         </EntityType>
+        <EntityType Name="Bidding">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="IdOffer" Type="int" Nullable="false" />
+          <Property Name="IdParentBidding" Type="int" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="IsFinal" Type="bit" />
+          <Property Name="SmjerBiddingReply" Type="int" />
+          <Property Name="IdBuyerComany" Type="int" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdCreated" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdUpdated" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
@@ -343,6 +362,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bidding_Bidding">
+          <End Role="Bidding" Type="Self.Bidding" Multiplicity="0..1" />
+          <End Role="Bidding1" Type="Self.Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bidding">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding1">
+              <PropertyRef Name="IdParentBidding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Bidding" Type="Self.Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdBuyerComany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Offer">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="1" />
+          <End Role="Bidding" Type="Self.Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdOffer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Usr">
+          <End Role="Usr" Type="Self.Usr" Multiplicity="0..1" />
+          <End Role="Bidding" Type="Self.Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Company_Region">
           <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
           <End Role="Company" Type="Self.Company" Multiplicity="*" />
@@ -364,6 +431,18 @@
             </Principal>
             <Dependent Role="DirFish">
               <PropertyRef Name="IdFishType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdCompany" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -598,6 +677,7 @@
         <EntityContainer Name="TridentModelStoreContainer">
           <EntitySet Name="AuditLogin" EntityType="Self.AuditLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuditUser" EntityType="Self.AuditUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bidding" EntityType="Self.Bidding" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DirFish" EntityType="Self.DirFish" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DirFishCategory" EntityType="Self.DirFishCategory" Schema="dbo" store:Type="Tables" />
@@ -623,6 +703,22 @@
             <End Role="Usr" EntitySet="Usr" />
             <End Role="AuditUser" EntitySet="AuditUser" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Bidding" Association="Self.FK_Bidding_Bidding">
+            <End Role="Bidding" EntitySet="Bidding" />
+            <End Role="Bidding1" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Company" Association="Self.FK_Bidding_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Offer" Association="Self.FK_Bidding_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Usr" Association="Self.FK_Bidding_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
           <AssociationSet Name="FK_Company_Region" Association="Self.FK_Company_Region">
             <End Role="Region" EntitySet="Region" />
             <End Role="Company" EntitySet="Company" />
@@ -630,6 +726,10 @@
           <AssociationSet Name="FK_DirFish_DirFishType" Association="Self.FK_DirFish_DirFishType">
             <End Role="DirFishType" EntitySet="DirFishType" />
             <End Role="DirFish" EntitySet="DirFish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Company" Association="Self.FK_Offer_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Offer" EntitySet="Offer" />
           </AssociationSet>
           <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="Self.FK_Offer_DirPaymentMethod">
             <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
@@ -756,6 +856,8 @@
           <NavigationProperty Name="Region" Relationship="Self.FK_Company_Region" FromRole="Company" ToRole="Region" />
           <NavigationProperty Name="Prs" Relationship="Self.FK_Prs_Company" FromRole="Company" ToRole="Prs" />
           <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Company" FromRole="Company" ToRole="Ship" />
+          <NavigationProperty Name="Bidding" Relationship="TridentModel.FK_Bidding_Company" FromRole="Company" ToRole="Bidding" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_Company" FromRole="Company" ToRole="Offer" />
         </EntityType>
         <EntityType Name="DirFish">
           <Key>
@@ -1042,6 +1144,7 @@
           <NavigationProperty Name="AuditUser" Relationship="Self.FK_AuditUser_Usr" FromRole="Usr" ToRole="AuditUser" />
           <NavigationProperty Name="DirUsrType" Relationship="Self.FK_Usr_DirUsrType" FromRole="Usr" ToRole="DirUsrType" />
           <NavigationProperty Name="Prs" Relationship="Self.FK_Usr_Prs" FromRole="Usr" ToRole="Prs" />
+          <NavigationProperty Name="Bidding" Relationship="TridentModel.FK_Bidding_Usr" FromRole="Usr" ToRole="Bidding" />
           <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Offer_Usr" FromRole="Usr" ToRole="Offer" />
         </EntityType>
         <Association Name="FK_AuditLogin_Usr">
@@ -1351,7 +1454,28 @@
             <End Role="Prs" EntitySet="Prs" />
             <End Role="Usr" EntitySet="Usr" />
           </AssociationSet>
+          <EntitySet Name="Bidding" EntityType="TridentModel.Bidding" />
           <EntitySet Name="Offer" EntityType="TridentModel.Offer" />
+          <AssociationSet Name="FK_Bidding_Bidding" Association="TridentModel.FK_Bidding_Bidding">
+            <End Role="Bidding" EntitySet="Bidding" />
+            <End Role="Bidding1" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Company" Association="TridentModel.FK_Bidding_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Offer" Association="TridentModel.FK_Bidding_Offer">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bidding_Usr" Association="TridentModel.FK_Bidding_Usr">
+            <End Role="Usr" EntitySet="Usr" />
+            <End Role="Bidding" EntitySet="Bidding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Company" Association="TridentModel.FK_Offer_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Offer_DirPaymentMethod" Association="TridentModel.FK_Offer_DirPaymentMethod">
             <End Role="DirPaymentMethod" EntitySet="DirPaymentMethod" />
             <End Role="Offer" EntitySet="Offer" />
@@ -1373,6 +1497,30 @@
             <End Role="OfferItem" EntitySet="OfferItem" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Bidding">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="IdOffer" Type="Int32" Nullable="false" />
+          <Property Name="IdParentBidding" Type="Int32" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="IsFinal" Type="Boolean" />
+          <Property Name="SmjerBiddingReply" Type="Int32" />
+          <Property Name="IdBuyerComany" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdCreated" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUpdated" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bidding1" Relationship="TridentModel.FK_Bidding_Bidding" FromRole="Bidding" ToRole="Bidding1" />
+          <NavigationProperty Name="Bidding2" Relationship="TridentModel.FK_Bidding_Bidding" FromRole="Bidding1" ToRole="Bidding" />
+          <NavigationProperty Name="Company" Relationship="TridentModel.FK_Bidding_Company" FromRole="Bidding" ToRole="Company" />
+          <NavigationProperty Name="Offer" Relationship="TridentModel.FK_Bidding_Offer" FromRole="Bidding" ToRole="Offer" />
+          <NavigationProperty Name="Usr" Relationship="TridentModel.FK_Bidding_Usr" FromRole="Bidding" ToRole="Usr" />
+        </EntityType>
         <EntityType Name="Offer">
           <Key>
             <PropertyRef Name="Id" />
@@ -1395,12 +1543,74 @@
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdUpdated" Type="Int32" />
           <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bidding" Relationship="TridentModel.FK_Bidding_Offer" FromRole="Offer" ToRole="Bidding" />
+          <NavigationProperty Name="Company" Relationship="TridentModel.FK_Offer_Company" FromRole="Offer" ToRole="Company" />
           <NavigationProperty Name="DirPaymentMethod" Relationship="TridentModel.FK_Offer_DirPaymentMethod" FromRole="Offer" ToRole="DirPaymentMethod" />
           <NavigationProperty Name="Port" Relationship="TridentModel.FK_Offer_Port" FromRole="Offer" ToRole="Port" />
           <NavigationProperty Name="Ship" Relationship="TridentModel.FK_Offer_Ship" FromRole="Offer" ToRole="Ship" />
           <NavigationProperty Name="Usr" Relationship="TridentModel.FK_Offer_Usr" FromRole="Offer" ToRole="Usr" />
           <NavigationProperty Name="OfferItem" Relationship="TridentModel.FK_OfferItem_Offer" FromRole="Offer" ToRole="OfferItem" />
         </EntityType>
+        <Association Name="FK_Bidding_Bidding">
+          <End Type="TridentModel.Bidding" Role="Bidding" Multiplicity="0..1" />
+          <End Type="TridentModel.Bidding" Role="Bidding1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bidding">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding1">
+              <PropertyRef Name="IdParentBidding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Company">
+          <End Type="TridentModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="TridentModel.Bidding" Role="Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdBuyerComany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Offer">
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="1" />
+          <End Type="TridentModel.Bidding" Role="Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdOffer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bidding_Usr">
+          <End Type="TridentModel.Usr" Role="Usr" Multiplicity="0..1" />
+          <End Type="TridentModel.Bidding" Role="Bidding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bidding">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offer_Company">
+          <End Type="TridentModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Offer_DirPaymentMethod">
           <End Type="TridentModel.DirPaymentMethod" Role="DirPaymentMethod" Multiplicity="0..1" />
           <End Type="TridentModel.Offer" Role="Offer" Multiplicity="*" />
@@ -1773,6 +1983,26 @@
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
                 <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bidding">
+            <EntityTypeMapping TypeName="TridentModel.Bidding">
+              <MappingFragment StoreEntitySet="Bidding">
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IdUpdated" ColumnName="IdUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdCreated" ColumnName="IdCreated" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdBuyerComany" ColumnName="IdBuyerComany" />
+                <ScalarProperty Name="SmjerBiddingReply" ColumnName="SmjerBiddingReply" />
+                <ScalarProperty Name="IsFinal" ColumnName="IsFinal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="IdParentBidding" ColumnName="IdParentBidding" />
+                <ScalarProperty Name="IdOffer" ColumnName="IdOffer" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

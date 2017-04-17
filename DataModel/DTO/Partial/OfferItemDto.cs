@@ -12,7 +12,7 @@ namespace DTO
 
         public string FishCategoryName { get; set; }
 
-        public OfferDto OfferParent { get; set; }
+        //public OfferDto OfferParent { get; set; }
 
     }
 }

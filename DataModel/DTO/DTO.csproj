@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Dto\AuditLoginDto.cs" />
     <Compile Include="Dto\AuditUserDto.cs" />
+    <Compile Include="Dto\BiddingDto.cs" />
     <Compile Include="Dto\CompanyDto.cs" />
     <Compile Include="Dto\DirFishCategoryDto.cs" />
     <Compile Include="Dto\DirFishConditionDto.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Dto\UsrDto.cs" />
     <Compile Include="Helper\AuditLoginHelper.cs" />
     <Compile Include="Helper\AuditUserHelper.cs" />
+    <Compile Include="Helper\BiddingHelper.cs" />
     <Compile Include="Helper\CompanyHelper.cs" />
     <Compile Include="Helper\DirFishCategoryHelper.cs" />
     <Compile Include="Helper\DirFishConditionHelper.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Helper\ShipHelper.cs" />
     <Compile Include="Helper\UsrHelper.cs" />
     <Compile Include="Partial\OfferDto.cs" />
+    <Compile Include="Partial\OfferHelper.cs" />
     <Compile Include="Partial\OfferItemDto.cs" />
     <Compile Include="Partial\PrsDto.cs" />
     <Compile Include="Partial\UsrDto.cs" />

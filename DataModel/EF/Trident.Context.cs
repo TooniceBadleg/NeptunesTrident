@@ -43,6 +43,7 @@ namespace EF
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Ship> Ship { get; set; }
         public virtual DbSet<Usr> Usr { get; set; }
+        public virtual DbSet<Bidding> Bidding { get; set; }
         public virtual DbSet<Offer> Offer { get; set; }
     }
 }

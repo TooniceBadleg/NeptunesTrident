@@ -19,6 +19,7 @@ namespace EF
         {
             this.AuditLogin = new HashSet<AuditLogin>();
             this.AuditUser = new HashSet<AuditUser>();
+            this.Bidding = new HashSet<Bidding>();
             this.Offer = new HashSet<Offer>();
         }
     
@@ -43,6 +44,8 @@ namespace EF
         public virtual ICollection<AuditUser> AuditUser { get; set; }
         public virtual DirUsrType DirUsrType { get; set; }
         public virtual Prs Prs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bidding> Bidding { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Offer> Offer { get; set; }
     }

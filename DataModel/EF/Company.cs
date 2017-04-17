@@ -19,6 +19,8 @@ namespace EF
         {
             this.Prs = new HashSet<Prs>();
             this.Ship = new HashSet<Ship>();
+            this.Bidding = new HashSet<Bidding>();
+            this.Offer = new HashSet<Offer>();
         }
     
         public int Id { get; set; }
@@ -36,5 +38,9 @@ namespace EF
         public virtual ICollection<Prs> Prs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ship> Ship { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bidding> Bidding { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Offer> Offer { get; set; }
     }
 }
