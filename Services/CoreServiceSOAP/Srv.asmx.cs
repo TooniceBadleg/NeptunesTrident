@@ -42,6 +42,25 @@ namespace CoreServiceSOAP
         }
 
 
+        [WebMethod]
+        public List<DirUsrTypeDto> DbAccessTest()
+        {
+            List<DirUsrTypeDto> data;// = new List<DirUsrTypeDto>();
+
+            using (TridentEntities ctx = new TridentEntities())
+            {
+                var q = from ut in ctx.DirUsrType
+                        where ut.Active == true
+                        orderby ut.Text
+                        select ut;
+                data = DirUsrTypeHelper.ToDTOs(q.ToList());
+            }
+
+            return data;
+        }
+
+
+
 
 
 
